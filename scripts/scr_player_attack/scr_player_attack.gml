@@ -9,14 +9,15 @@ function scr_player_attack(_range, _halfAngle)
         var dist = point_distance(other.x, other.y, x, y);
         if (dist <= _range)
         {
-            var ang_to = point_direction(x, y,other.x, other.y);
-            var diff   = angle_difference(facing_angle, ang_to);
-
+            var ang_to = point_direction(other.x, other.y, x, y);
+            var diff   = angle_difference(other.facing_angle, ang_to);
             if (abs(diff) <= _halfAngle && variable_instance_exists(id,"hp"))
             {
                 // ★ 判断是否为唱歌 Boss
                 if (object_index == obj_boss_song)
-                    boss_song_take_damage(1);     // 调专用脚本
+                    boss_song_take_damage(1);    
+				else if (object_index == obj_boss_final)
+					boss_final_take_damage(1);
                 else
                     scr_take_damage(1);           // 普通敌人走原逻辑
             }

@@ -4,7 +4,7 @@ other.has_weapon = true;
 // 2 弹对白框
 if (!instance_exists(obj_dialogueBox))
 {
-    var lines = scr_load_txt("npc0_collectible.txt");
+    var lines = scr_load_txt("npc1_collectible.txt");
     instance_create_layer(0,0,"GUI", obj_dialogueBox,
         { lines: lines, speaker: "npc0 precious memory" });
 }

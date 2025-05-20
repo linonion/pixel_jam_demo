@@ -48,3 +48,24 @@ function boss_song_take_damage(amount)
         instance_destroy();
     }
 }
+
+
+function boss_final_take_damage(amount)
+{
+    hp -= amount;
+    with (other) {}   // 可做闪白
+
+    var dlg_file;
+    switch (hp)
+    {
+        case 2: dlg_file="boss_final_hit1.txt"; break;
+        case 1: dlg_file="boss_final_hit2.txt"; break;
+        case 0: dlg_file="boss_final_hit3.txt"; break;
+    }
+
+    instance_create_layer(0,0,"GUI", obj_dialogueBox,
+        { lines: scr_load_txt(dlg_file), speaker:"??? " });
+    global.dialog_cd = room_speed/3;
+
+    if (hp <= 0) instance_destroy();
+}

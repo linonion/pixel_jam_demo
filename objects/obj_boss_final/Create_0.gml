@@ -1,0 +1,3 @@
+event_inherited();        // 仍设 max_hp、sprite …
+
+life_timer = room_speed * 5;   // 2 秒后自动死亡
